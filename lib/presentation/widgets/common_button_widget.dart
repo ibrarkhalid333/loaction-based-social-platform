@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:location_based_social_platform/theme/theme_helper.dart';
 
 class CommonButtonWidget extends StatelessWidget {
   const CommonButtonWidget({
     super.key,
-    this.textColor = Colors.white,
-    // this.textColor = appTheme.buttonTextColor,
-    this.buttonColor = Colors.white,
     this.title = '',
     required this.onPress,
     this.width = 30,
     this.height = 50,
     this.loading = false,
+    this.fontSize = 18,
     this.icon = const Icon(Icons.account_circle),
   });
 
@@ -19,8 +18,8 @@ class CommonButtonWidget extends StatelessWidget {
   final String title;
   final double height, width;
   final VoidCallback onPress;
-  final Color textColor, buttonColor;
   final Icon icon;
+  final double fontSize;
 
   @override
   Widget build(BuildContext context) {
@@ -30,17 +29,21 @@ class CommonButtonWidget extends StatelessWidget {
         height: height,
         width: width,
         decoration: BoxDecoration(
-          color: buttonColor,
-          borderRadius: BorderRadius.circular(8),
+          color: appTheme.primaryColor,
+          borderRadius: BorderRadius.circular(12.r),
         ),
         child: loading
             ? const Center(child: CircularProgressIndicator())
             : Center(
                 child: Text(
                   title,
-                  style: Theme.of(
-                    context,
-                  ).textTheme.titleMedium?.copyWith(color: Colors.white),
+
+                  style: textTheme.textStylePoppinsMedium.copyWith(
+                    color: appTheme.buttonTextColor,
+                    fontSize: fontSize.sp,
+                    height: 18 / fontSize,
+                    letterSpacing: 0,
+                  ),
                 ),
               ),
       ),

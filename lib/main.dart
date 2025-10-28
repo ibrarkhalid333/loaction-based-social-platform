@@ -7,7 +7,7 @@ import 'package:location_based_social_platform/routes/app_routes.dart';
 void main() {
   runApp(
     ScreenUtilInit(
-      designSize: const Size(360, 640),
+      designSize: const Size(390, 844),
       builder: (context, child) => const MyApp(),
     ),
   );
@@ -20,8 +20,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Flutter Demo',
+      initialRoute: AppRoutes.initialRoute,
       getPages: AppRoutes.pages,
-      home: SplashScreen(),
     );
   }
 }

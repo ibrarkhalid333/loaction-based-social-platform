@@ -6,7 +6,7 @@ import 'package:location_based_social_platform/presentation/intro/splash/splash_
 void main() {
   runApp(
     ScreenUtilInit(
-      designSize: const Size(360, 640),
+      designSize: const Size(365, 640),
       builder: (context, child) => const MyApp(),
     ),
   );

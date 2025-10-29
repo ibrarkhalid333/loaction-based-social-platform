@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:location_based_social_platform/assets/assets.dart';
-import 'package:location_based_social_platform/presentation/auth/controller/login_controller.dart';
+import 'package:location_based_social_platform/presentation/auth/login/controller/login_controller.dart';
 import 'package:location_based_social_platform/presentation/auth/widgets/social_button_widget.dart';
 import 'package:location_based_social_platform/presentation/widgets/common_button_widget.dart';
 import 'package:location_based_social_platform/presentation/widgets/text_form_field_widget.dart';
@@ -62,7 +63,11 @@ class LoginScreen extends GetWidget<LoginController> {
                   currentFocusNode: passwordFocusNode,
                   isLastField: true,
                   obscureText: true,
-                  suffixIcon: ImageIcon(AssetImage(IconAssets.eye_icon)),
+                  suffixIcon: SvgPicture.asset(
+                    IconAssets.eye_icon,
+                    width: 8.sp,
+                    height: 8.sp,
+                  ),
                   labelText: 'Enter Your Password',
                 ),
                 SizedBox(height: 11.h),
@@ -78,41 +83,64 @@ class LoginScreen extends GetWidget<LoginController> {
                     ),
                   ),
                 ),
-                SizedBox(height: 30.h),
+                SizedBox(height: 12.h),
                 CommonButtonWidget(
                   title: 'Login',
                   width: double.infinity,
                   onPress: () {},
                 ),
-                SizedBox(height: 25.h),
+                SizedBox(height: 32.h),
                 Row(
                   children: [
-                    Expanded(child: Divider()),
+                    // Expanded(child: Divider(indent: 0, endIndent: 1.0.sp)),
+                    Expanded(
+                      child: Container(
+                        height: 1.h,
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [Colors.white, Colors.black],
+                          ),
+                        ),
+                      ),
+                    ),
                     SizedBox(width: 10.w),
                     Text('or continue with'),
                     SizedBox(width: 10.w),
-                    Expanded(child: Divider()),
+                    Expanded(
+                      child: Container(
+                        height: 1.h,
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [Colors.black, Colors.white],
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
                 SizedBox(height: 30.h),
                 SocialButtonWidget(
+                  iconPath: IconAssets.gooogle_icon,
                   title: 'Continue with Google',
                   width: double.infinity,
                   onPress: () {},
                 ),
-                SizedBox(height: 10.h),
+                SizedBox(height: 12.h),
                 SocialButtonWidget(
+                  iconPath: IconAssets.apple_icon,
                   title: 'Continue with Apple',
                   width: double.infinity,
                   onPress: () {},
                 ),
-                SizedBox(height: 40.h),
+                SizedBox(height: 32.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
                       "Don't have an account?",
-                      style: TextStyle(fontSize: 17.sp),
+                      style: textTheme.textStylePoppinsRegular.copyWith(
+                        color: appTheme.secondaryTextColor,
+                      ),
                     ),
                     TextButton(
                       onPressed: () {},

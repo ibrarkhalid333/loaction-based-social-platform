@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:location_based_social_platform/presentation/auth/binding/auth_bindings.dart';
-import 'package:location_based_social_platform/presentation/auth/screens/login_screen.dart';
+import 'package:location_based_social_platform/presentation/auth/login/binding/login_bindings.dart';
+import 'package:location_based_social_platform/presentation/auth/login/screen/login_screen.dart';
 import 'package:location_based_social_platform/presentation/intro/splash/binding/splash_binding.dart';
 import 'package:location_based_social_platform/presentation/intro/splash/splash_screen.dart';
 
@@ -19,6 +19,10 @@ class AppRoutes {
       page: () => SplashScreen(),
       bindings: [SplashBinding()],
     ),
-    GetPage(name: login, page: () => LoginScreen(), bindings: [AuthBindings()]),
+    GetPage(
+      name: login,
+      page: () => LoginScreen(),
+      bindings: [LoginBindings()],
+    ),
   ];
 }

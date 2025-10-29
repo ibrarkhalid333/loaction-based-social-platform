@@ -36,25 +36,23 @@ class TextFormFieldWidget extends StatelessWidget {
       obscureText: obscureText,
       keyboardType: keyboardType,
       decoration: InputDecoration(
+        filled: true,
         fillColor: appTheme.inputFieldFillColor,
         hintText: labelText,
         hintStyle: textTheme.textStylePoppinsRegular.copyWith(
           color: appTheme.placeTextColor,
         ),
-        border: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: isFocused
-                ? appTheme.primaryColor
-                : appTheme.inputFieldBorderrUnfocusColor,
-          ),
+
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: appTheme.inputFieldBorderrUnfocusColor),
           borderRadius: BorderRadius.circular(12.r),
         ),
-        suffixIcon: suffixIcon != null
-            ? IconTheme(
-                data: IconThemeData(color: appTheme.secondaryTextColor),
-                child: suffixIcon!,
-              )
-            : null,
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: appTheme.primaryColor),
+          borderRadius: BorderRadius.circular(12.r),
+        ),
+
+        suffixIcon: suffixIcon != null ? suffixIcon! : null,
       ),
       validator: validator,
       onFieldSubmitted: isLastField

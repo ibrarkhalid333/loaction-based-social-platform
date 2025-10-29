@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:location_based_social_platform/presentation/auth/controller/login_controller.dart';
+import 'package:location_based_social_platform/presentation/auth/signup/controller/signup_controller.dart';
 import 'package:location_based_social_platform/presentation/auth/widgets/social_button_widget.dart';
 import 'package:location_based_social_platform/presentation/widgets/common_button_widget.dart';
 import 'package:location_based_social_platform/presentation/widgets/text_form_field_widget.dart';
 import 'package:location_based_social_platform/theme/theme_helper.dart';
 
-class LoginScreen extends GetWidget<LoginController> {
+class LoginScreen extends GetWidget<SignupController> {
   LoginScreen({super.key});
   final emailController = TextEditingController();
   final passwordController = TextEditingController();

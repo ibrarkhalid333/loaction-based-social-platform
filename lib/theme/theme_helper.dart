@@ -19,6 +19,9 @@ class AppColors {
   Color get lightTextColor => const Color(0xff666666);
   Color get secondaryContrastColor => const Color(0xffD2FC8C);
   Color get buttonTextColor => const Color(0xffFFFFFF);
+  Color get socialButtonColor => const Color(0xffEFEFEF);
+  Color get inputFieldFillColor => const Color(0xffFFFFFF);
+  Color get inputFieldBorderrUnfocusColor => const Color(0xffE8E6E6);
 }
 
 /// Text Styles (unchanged)

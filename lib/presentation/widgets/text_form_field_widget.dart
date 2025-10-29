@@ -29,18 +29,32 @@ class TextFormFieldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isFocused = currentFocusNode.hasFocus;
     return TextFormField(
       controller: controller,
       focusNode: currentFocusNode,
       obscureText: obscureText,
       keyboardType: keyboardType,
       decoration: InputDecoration(
-        labelText: labelText,
-        labelStyle: textTheme.textStylePoppinsRegular.copyWith(
+        fillColor: appTheme.inputFieldFillColor,
+        hintText: labelText,
+        hintStyle: textTheme.textStylePoppinsRegular.copyWith(
           color: appTheme.placeTextColor,
         ),
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12.r)),
-        suffixIcon: suffixIcon,
+        border: OutlineInputBorder(
+          borderSide: BorderSide(
+            color: isFocused
+                ? appTheme.primaryColor
+                : appTheme.inputFieldBorderrUnfocusColor,
+          ),
+          borderRadius: BorderRadius.circular(12.r),
+        ),
+        suffixIcon: suffixIcon != null
+            ? IconTheme(
+                data: IconThemeData(color: appTheme.secondaryTextColor),
+                child: suffixIcon!,
+              )
+            : null,
       ),
       validator: validator,
       onFieldSubmitted: isLastField

@@ -44,6 +44,7 @@ class LoginScreen extends GetWidget<LoginController> {
                   style: textTheme.textStylePoppinsRegular.copyWith(
                     color: appTheme.secondaryTextColor,
                     fontSize: 14.sp,
+                    letterSpacing: 0,
                   ),
                 ),
                 SizedBox(height: 55.h),
@@ -65,8 +66,8 @@ class LoginScreen extends GetWidget<LoginController> {
                   obscureText: true,
                   suffixIcon: SvgPicture.asset(
                     IconAssets.eye_icon,
-                    width: 8.sp,
-                    height: 8.sp,
+                    width: 25.w,
+                    height: 25.h,
                   ),
                   labelText: 'Enter Your Password',
                 ),
@@ -119,20 +120,22 @@ class LoginScreen extends GetWidget<LoginController> {
                   ],
                 ),
                 SizedBox(height: 30.h),
-                SocialButtonWidget(
-                  iconPath: IconAssets.gooogle_icon,
-                  title: 'Continue with Google',
-                  width: double.infinity,
-                  onPress: () {},
+                Row(
+                  spacing: 24.w,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SocialButtonWidget(
+                      iconPath: IconAssets.gooogle_icon,
+                      onPress: () {},
+                    ),
+                    SizedBox(height: 12.h),
+                    SocialButtonWidget(
+                      iconPath: IconAssets.apple_icon,
+                      onPress: () {},
+                    ),
+                  ],
                 ),
-                SizedBox(height: 12.h),
-                SocialButtonWidget(
-                  iconPath: IconAssets.apple_icon,
-                  title: 'Continue with Apple',
-                  width: double.infinity,
-                  onPress: () {},
-                ),
-                SizedBox(height: 32.h),
+                SizedBox(height: 30.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -143,7 +146,9 @@ class LoginScreen extends GetWidget<LoginController> {
                       ),
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        controller.navigateToNext();
+                      },
                       child: Text(
                         "Sign up",
                         style: textTheme.textStylePoppinsRegular.copyWith(

@@ -7,17 +7,14 @@ import 'package:location_based_social_platform/presentation/auth/signup/controll
 import 'package:location_based_social_platform/presentation/auth/widgets/social_button_widget.dart';
 import 'package:location_based_social_platform/presentation/widgets/common_button_widget.dart';
 import 'package:location_based_social_platform/presentation/widgets/text_form_field_widget.dart';
-import 'package:location_based_social_platform/routes/app_routes.dart';
 import 'package:location_based_social_platform/theme/theme_helper.dart';
 
-class SignupScreen extends GetWidget<SignupController> {
-  SignupScreen({super.key});
-  final emailController = TextEditingController();
-  final nameController = TextEditingController();
-  final usernameController = TextEditingController();
-  final emailFocusNode = FocusNode();
-  final usernameFocusNode = FocusNode();
-  final nameFocusNode = FocusNode();
+class VerifyAge extends GetWidget<SignupController> {
+ VerifyAge ({super.key});
+  final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
+  final passwordFocusNode = FocusNode();
+  final confirmPasswordFocusNode = FocusNode();
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +31,7 @@ class SignupScreen extends GetWidget<SignupController> {
               children: [
                 SizedBox(height: 83.h),
                 Text(
-                  'Create Your Account',
+                  'Let\'s Verify Your Age',
                   style: textTheme.textStylePoppinsSemiBold.copyWith(
                     color: appTheme.textColor,
                     fontSize: 24.sp,
@@ -43,7 +40,8 @@ class SignupScreen extends GetWidget<SignupController> {
                 ),
                 SizedBox(height: 4.h),
                 Text(
-                  'Create your account to get started.',
+                  'Create a strong password to secure your account',
+                  textAlign: TextAlign.center,
                   style: textTheme.textStylePoppinsRegular.copyWith(
                     color: appTheme.secondaryTextColor,
                     fontSize: 14.sp,
@@ -51,47 +49,50 @@ class SignupScreen extends GetWidget<SignupController> {
                   ),
                 ),
                 SizedBox(height: 46.h),
+                Align(alignment: Alignment.centerLeft, child: Text('Password')),
+                SizedBox(height: 8.sp),
+                TextFormFieldWidget(
+                  controller: passwordController,
+                  currentFocusNode: passwordFocusNode,
+                  nextFocusNode: confirmPasswordFocusNode,
+                  obscureText: true,
+                  suffixIcon: SvgPicture.asset(
+                    IconAssets.eye_icon,
+                    width: 25.w,
+                    height: 25.h,
+                  ),
+                  labelText: 'Enter your Password',
+                ),
+                SizedBox(height: 24.h),
                 Align(
                   alignment: Alignment.centerLeft,
-                  child: Text('Full Name'),
+                  child: Text('Confirm Password'),
                 ),
                 SizedBox(height: 8.sp),
                 TextFormFieldWidget(
-                  controller: nameController,
-                  currentFocusNode: nameFocusNode,
-                  nextFocusNode: usernameFocusNode,
-                  labelText: 'Enter Your Full Name',
-                ),
-                SizedBox(height: 24.h),
-                Align(alignment: Alignment.centerLeft, child: Text('Username')),
-                SizedBox(height: 8.sp),
-                TextFormFieldWidget(
-                  controller: usernameController,
-                  currentFocusNode: usernameFocusNode,
-                  nextFocusNode: emailFocusNode,
-                  labelText: 'Create Username',
-                ),
-                SizedBox(height: 24.h),
-                Align(alignment: Alignment.centerLeft, child: Text('Email')),
-                SizedBox(height: 8.sp),
-                TextFormFieldWidget(
-                  controller: emailController,
-                  currentFocusNode: emailFocusNode,
+                  controller: confirmPasswordController,
+                  currentFocusNode: confirmPasswordFocusNode,
                   isLastField: true,
-                  labelText: 'Enter Your Email',
+                  obscureText: true,
+                  suffixIcon: SvgPicture.asset(
+                    IconAssets.eye_icon,
+                    width: 25.w,
+                    height: 25.h,
+                  ),
+                  labelText: 'Re-enter your Password',
                 ),
+                SizedBox(height: 24.h),
 
                 SizedBox(height: 32.h),
                 CommonButtonWidget(
                   title: 'Next',
                   width: double.infinity,
-                  onPress: () {
-                    controller.navigateToNext(AppRoutes.createPassword);
-                  },
+                  onPress: () {},
                 ),
                 SizedBox(height: 24.h),
                 Row(
                   children: [
+                    // Expanded(child: Divider(indent: 0, endIndent: 1.0.sp)),
                     Expanded(
                       child: Container(
                         height: 1.h,
@@ -117,7 +118,7 @@ class SignupScreen extends GetWidget<SignupController> {
                     ),
                   ],
                 ),
-                SizedBox(height: 24.h),
+                SizedBox(height: 30.h),
                 Row(
                   spacing: 24.w,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -133,7 +134,7 @@ class SignupScreen extends GetWidget<SignupController> {
                     ),
                   ],
                 ),
-                SizedBox(height: 24.h),
+                SizedBox(height: 30.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

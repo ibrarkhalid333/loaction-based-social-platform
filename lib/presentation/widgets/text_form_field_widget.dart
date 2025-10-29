@@ -35,7 +35,9 @@ class TextFormFieldWidget extends StatelessWidget {
       focusNode: currentFocusNode,
       obscureText: obscureText,
       keyboardType: keyboardType,
+
       decoration: InputDecoration(
+        suffixIconConstraints: BoxConstraints(minWidth: 20.w, minHeight: 20.h),
         filled: true,
         fillColor: appTheme.inputFieldFillColor,
         hintText: labelText,
@@ -52,7 +54,10 @@ class TextFormFieldWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(12.r),
         ),
 
-        suffixIcon: suffixIcon != null ? suffixIcon! : null,
+        suffixIcon: Padding(
+          padding: EdgeInsets.only(right: 18.w),
+          child: suffixIcon != null ? suffixIcon! : null,
+        ),
       ),
       validator: validator,
       onFieldSubmitted: isLastField

@@ -6,18 +6,16 @@ import 'package:location_based_social_platform/theme/theme_helper.dart';
 class SocialButtonWidget extends StatelessWidget {
   const SocialButtonWidget({
     super.key,
-    this.title = '',
     this.iconPath = '',
     required this.onPress,
-    this.width = 30,
-    this.height = 50,
+    this.width = 62,
+    this.height = 62,
     this.loading = false,
     this.fontSize = 14,
     this.icon = const Icon(Icons.account_circle),
   });
 
   final bool loading;
-  final String title;
   final double height, width;
   final VoidCallback onPress;
   final Icon icon;
@@ -33,29 +31,11 @@ class SocialButtonWidget extends StatelessWidget {
         width: width,
         decoration: BoxDecoration(
           color: appTheme.socialButtonColor,
-          borderRadius: BorderRadius.circular(12.r),
+          borderRadius: BorderRadius.circular(100.r),
         ),
         child: loading
             ? const Center(child: CircularProgressIndicator())
-            : Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SvgPicture.asset(iconPath),
-                    SizedBox(width: 12.w),
-                    Text(
-                      title,
-
-                      style: textTheme.textStylePoppinsMedium.copyWith(
-                        color: appTheme.secondaryTextColor,
-                        fontSize: fontSize.sp,
-                        height: 14 / fontSize,
-                        letterSpacing: 0,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+            : Center(child: SvgPicture.asset(iconPath)),
       ),
     );
   }

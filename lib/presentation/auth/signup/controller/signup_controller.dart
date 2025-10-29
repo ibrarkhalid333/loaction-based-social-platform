@@ -5,4 +5,11 @@ class SignupController extends GetxController {
   void onInit() {
     super.onInit();
   }
+
+  Future<void> navigateToNext(routeName) async {
+    print('🔄 Attempting to navigate to: $routeName');
+    print('📋 Current route: ${Get.currentRoute}');
+    print('📋 Previous route: ${Get.previousRoute}');
+    Get.toNamed(routeName);
+  }
 }

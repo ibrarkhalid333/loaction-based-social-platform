@@ -7,7 +7,7 @@ import 'package:location_based_social_platform/routes/app_routes.dart';
 void main() {
   runApp(
     ScreenUtilInit(
-      designSize: const Size(390, 844),
+      designSize: const Size(390, 797),
       builder: (context, child) => const MyApp(),
     ),
   );

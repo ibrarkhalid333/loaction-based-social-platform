@@ -5,6 +5,7 @@ import 'package:location_based_social_platform/presentation/auth/signup/binding/
 import 'package:location_based_social_platform/presentation/auth/signup/screen/create_password.dart';
 import 'package:location_based_social_platform/presentation/auth/signup/screen/signup_screen.dart';
 import 'package:location_based_social_platform/presentation/auth/signup/screen/verify_age.dart';
+import 'package:location_based_social_platform/presentation/auth/signup/screen/verify_otp.dart';
 import 'package:location_based_social_platform/presentation/intro/splash/binding/splash_binding.dart';
 import 'package:location_based_social_platform/presentation/intro/splash/splash_screen.dart';
 
@@ -15,6 +16,7 @@ class AppRoutes {
   static const String signup = '/signup';
   static const String createPassword = '/create_password';
   static const String verifyAge = '/verify_age';
+  static const String verifyOTP = '/verify_otp';
   static List<GetPage> pages = [
     GetPage(
       name: initialRoute,
@@ -44,6 +46,11 @@ class AppRoutes {
     GetPage(
       name: verifyAge,
       page: () => VerifyAge(),
+      bindings: [SignupBinding()],
+    ),
+    GetPage(
+      name: verifyOTP,
+      page: () => VerifyOtp(),
       bindings: [SignupBinding()],
     ),
   ];

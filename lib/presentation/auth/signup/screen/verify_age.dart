@@ -1,16 +1,15 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:location_based_social_platform/assets/assets.dart';
 import 'package:location_based_social_platform/presentation/auth/signup/controller/signup_controller.dart';
-import 'package:location_based_social_platform/presentation/auth/widgets/social_button_widget.dart';
 import 'package:location_based_social_platform/presentation/widgets/common_button_widget.dart';
-import 'package:location_based_social_platform/presentation/widgets/text_form_field_widget.dart';
+import 'package:location_based_social_platform/routes/app_routes.dart';
 import 'package:location_based_social_platform/theme/theme_helper.dart';
+import 'package:scroll_date_picker/scroll_date_picker.dart';
 
 class VerifyAge extends GetWidget<SignupController> {
- VerifyAge ({super.key});
+  VerifyAge({super.key});
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
   final passwordFocusNode = FocusNode();
@@ -40,7 +39,7 @@ class VerifyAge extends GetWidget<SignupController> {
                 ),
                 SizedBox(height: 4.h),
                 Text(
-                  'Create a strong password to secure your account',
+                  'We just need your date of birth to confirm you’re old enough to join our community.',
                   textAlign: TextAlign.center,
                   style: textTheme.textStylePoppinsRegular.copyWith(
                     color: appTheme.secondaryTextColor,
@@ -48,112 +47,110 @@ class VerifyAge extends GetWidget<SignupController> {
                     letterSpacing: 0,
                   ),
                 ),
-                SizedBox(height: 46.h),
-                Align(alignment: Alignment.centerLeft, child: Text('Password')),
-                SizedBox(height: 8.sp),
-                TextFormFieldWidget(
-                  controller: passwordController,
-                  currentFocusNode: passwordFocusNode,
-                  nextFocusNode: confirmPasswordFocusNode,
-                  obscureText: true,
-                  suffixIcon: SvgPicture.asset(
-                    IconAssets.eye_icon,
-                    width: 25.w,
-                    height: 25.h,
-                  ),
-                  labelText: 'Enter your Password',
-                ),
-                SizedBox(height: 24.h),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text('Confirm Password'),
-                ),
-                SizedBox(height: 8.sp),
-                TextFormFieldWidget(
-                  controller: confirmPasswordController,
-                  currentFocusNode: confirmPasswordFocusNode,
-                  isLastField: true,
-                  obscureText: true,
-                  suffixIcon: SvgPicture.asset(
-                    IconAssets.eye_icon,
-                    width: 25.w,
-                    height: 25.h,
-                  ),
-                  labelText: 'Re-enter your Password',
-                ),
-                SizedBox(height: 24.h),
+                SizedBox(height: 61.h),
+                Container(
+                  width: double.infinity,
+                  height: 224.h,
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Container(
+                            height: 42.h,
+                            width: 108.w,
+                            color: Colors.white,
+                            child: Center(
+                              child: Text(
+                                'Year',
+                                style: textTheme.textStylePoppinsMedium
+                                    .copyWith(fontSize: 14.sp),
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 16.w),
+                          Container(
+                            height: 42.h,
+                            width: 108.w,
+                            color: Colors.white,
+                            child: Center(
+                              child: Text(
+                                'Month',
+                                style: textTheme.textStylePoppinsMedium
+                                    .copyWith(fontSize: 14.sp),
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 16.w),
+                          Container(
+                            height: 42.h,
+                            width: 108.w,
+                            color: Colors.white,
+                            child: Center(
+                              child: Text(
+                                'Day',
+                                style: textTheme.textStylePoppinsMedium
+                                    .copyWith(fontSize: 14.sp),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Expanded(
+                        child: Container(
+                          width: double.infinity,
 
-                SizedBox(height: 32.h),
+                          //check this scrollDatePicker
+                          child: ScrollDatePicker(
+                            selectedDate: controller.datetime.value,
+                            onDateTimeChanged: (DateTime newTime) {},
+                            viewType: [
+                              DatePickerViewType.year,
+                              DatePickerViewType.month,
+                              DatePickerViewType.day,
+                            ],
+                            scrollViewOptions: DatePickerScrollViewOptions(
+                              year: ScrollViewDetailOptions(
+                                textStyle: textTheme.textStylePoppinsRegular
+                                    .copyWith(
+                                      fontSize: 14.sp,
+                                      letterSpacing: 0,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                              ),
+                              month: ScrollViewDetailOptions(
+                                alignment: Alignment.centerLeft,
+                                textStyle: textTheme.textStylePoppinsRegular
+                                    .copyWith(
+                                      fontSize: 14.sp,
+                                      letterSpacing: 0,
+                                      overflow: TextOverflow.visible,
+                                    ),
+                              ),
+                              day: ScrollViewDetailOptions(
+                                textStyle: textTheme.textStylePoppinsRegular
+                                    .copyWith(fontSize: 18.sp),
+                              ),
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            ),
+                            options: DatePickerOptions(
+                              itemExtent: 45.h,
+                              diameterRatio: 5,
+                              perspective: 0.01,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 242.h),
+
                 CommonButtonWidget(
                   title: 'Next',
                   width: double.infinity,
-                  onPress: () {},
-                ),
-                SizedBox(height: 24.h),
-                Row(
-                  children: [
-                    // Expanded(child: Divider(indent: 0, endIndent: 1.0.sp)),
-                    Expanded(
-                      child: Container(
-                        height: 1.h,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [Colors.white, Colors.black],
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(width: 10.w),
-                    Text('or continue with'),
-                    SizedBox(width: 10.w),
-                    Expanded(
-                      child: Container(
-                        height: 1.h,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [Colors.black, Colors.white],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 30.h),
-                Row(
-                  spacing: 24.w,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SocialButtonWidget(
-                      iconPath: IconAssets.gooogle_icon,
-                      onPress: () {},
-                    ),
-                    SizedBox(height: 12.h),
-                    SocialButtonWidget(
-                      iconPath: IconAssets.apple_icon,
-                      onPress: () {},
-                    ),
-                  ],
-                ),
-                SizedBox(height: 30.h),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Already have an account?",
-                      style: textTheme.textStylePoppinsRegular.copyWith(
-                        color: appTheme.secondaryTextColor,
-                      ),
-                    ),
-                    TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        "Login",
-                        style: textTheme.textStylePoppinsRegular.copyWith(
-                          fontSize: 14.sp,
-                        ),
-                      ),
-                    ),
-                  ],
+                  onPress: () {
+                    controller.navigateToNext(AppRoutes.verifyOTP);
+                  },
                 ),
               ],
             ),

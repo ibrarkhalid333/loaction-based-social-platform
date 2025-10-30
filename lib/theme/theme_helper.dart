@@ -22,6 +22,7 @@ class AppColors {
   Color get socialButtonColor => const Color(0xffEFEFEF);
   Color get inputFieldFillColor => const Color(0xffFFFFFF);
   Color get inputFieldBorderrUnfocusColor => const Color(0xffE8E6E6);
+  Color get otpFieldUnfocusColor => const Color(0xffEFEFEF);
 }
 
 /// Text Styles (unchanged)
